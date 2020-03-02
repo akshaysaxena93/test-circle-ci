@@ -1,0 +1,21 @@
+version: 2.1
+orbs:
+  docker: circleci/docker@0.5.20
+  gcp-cli: circleci/gcp-cli@1.8.3
+jobs:
+  build:
+    docker:
+      - image: tedakshay/fedora:test-circle-new
+    steps:
+      - checkout
+      - docker/install-docker
+      - setup_remote_docker
+      - run:
+          name: build and push docker image
+          command: |
+            # docker login
+            sudo docker login --username=tedakshay -p Akshhy@16Akshhy@16
+            sudo docker build -t tedakshay/fedora:test-circle-new .
+            VERSION=$(git tag | tail -1)
+            docker tag tedakshay/fedora:test-circle-new tedakshay/fedora:$VERSION
+            docker push tedakshay/fedora:$VERSION
