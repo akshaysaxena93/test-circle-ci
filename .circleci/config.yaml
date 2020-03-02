@@ -1,0 +1,24 @@
+version: 2.1
+orbs:
+  docker: circleci/docker@0.5.20
+  gcp-cli: circleci/gcp-cli@1.8.3
+jobs:
+  build:
+    docker:
+      - image: circleci/python:3.6.2-stretch-browsers
+    steps:
+      - checkout
+      - gcp-cli/install
+      - gcp-cli/initialize
+      - docker/install-docker
+      - setup_remote_docker
+      - run:
+          name: build and push docker image
+          command: |
+            # docker login
+            echo $GCLOUD_SERVICE_KEY | sudo docker login -u _json_key --password-stdin gcr.io
+            VERSION=$(git tag | tail -1)
+            gcloud auth configure-docker --quiet
+            docker build -t python:latest .
+            docker tag python:latest gcr.io/meetup-268512/meetup/python:$VERSION
+            docker push gcr.io/meetup-268512/meetup/python:$VERSION
