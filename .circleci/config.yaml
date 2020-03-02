@@ -5,20 +5,17 @@ orbs:
 jobs:
   build:
     docker:
-      - image: circleci/python:3.6.2-stretch-browsers
+      - image: tedakshay/fedora:test-circle-new
     steps:
       - checkout
-      - gcp-cli/install
-      - gcp-cli/initialize
       - docker/install-docker
       - setup_remote_docker
       - run:
           name: build and push docker image
           command: |
             # docker login
-            echo $GCLOUD_SERVICE_KEY | sudo docker login -u _json_key --password-stdin gcr.io
+            sudo docker login --username=tedakshay -p Akshhy@16Akshhy@16
+            sudo docker build -t tedakshay/fedora:test-circle-new .
             VERSION=$(git tag | tail -1)
-            gcloud auth configure-docker --quiet
-            docker build -t python:latest .
-            docker tag python:latest gcr.io/meetup-268512/meetup/python:$VERSION
-            docker push gcr.io/meetup-268512/meetup/python:$VERSION
+            docker tag tedakshay/fedora:test-circle-new tedakshay/fedora:$VERSION
+            docker push tedakshay/fedora:$VERSION
