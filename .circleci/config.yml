@@ -27,4 +27,4 @@ jobs:
             VERSION=$(git tag | tail -1)
             echo $VERSION
             docker tag tedakshay/fedora:test-circle-new tedakshay/fedora:$VERSION
-            docker push tedakshay/fedora:$VERSION
+            docker push tedakshay/fedora:new
