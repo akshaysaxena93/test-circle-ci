@@ -8,6 +8,8 @@ jobs:
       - image: tedakshay/fedora:test-circle-new
     steps:
       - checkout
+      - gcp-cli/install
+      - gcp-cli/initialize
       - docker/install-docker
       - setup_remote_docker
       - run:
