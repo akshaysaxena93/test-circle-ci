@@ -8,6 +8,7 @@ jobs:
       - image: tedakshay/fedora:test-circle-new
     steps:
       - checkout
+      - docker/install-docker
       - setup_remote_docker
       - run:
           name: build and push docker image
