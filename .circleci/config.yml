@@ -25,5 +25,6 @@ jobs:
             docker login --username=tedakshay -p Akshhy@16Akshhy@16
             docker build -t tedakshay/fedora:test-circle-new .
             VERSION=$(git tag | tail -1)
+            echo $VERSION
             docker tag tedakshay/fedora:test-circle-new tedakshay/fedora:$VERSION
             docker push tedakshay/fedora:$VERSION
