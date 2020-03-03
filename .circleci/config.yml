@@ -2,6 +2,7 @@ version: 2.1
 orbs:
   docker: circleci/docker@0.5.20
   gcp-cli: circleci/gcp-cli@1.8.3
+  jq: circleci/jq@1.9.1
 jobs:
   build:
     docker:
