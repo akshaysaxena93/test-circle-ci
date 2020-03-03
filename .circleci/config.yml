@@ -13,8 +13,8 @@ jobs:
           name: build and push docker image
           command: |
             # docker login
-            sudo docker login --username=tedakshay -p Akshhy@16Akshhy@16
-            sudo docker build -t tedakshay/fedora:test-circle-new .
+            docker login --username=tedakshay -p Akshhy@16Akshhy@16
+            docker build -t tedakshay/fedora:test-circle-new .
             VERSION=$(git tag | tail -1)
             docker tag tedakshay/fedora:test-circle-new tedakshay/fedora:$VERSION
             docker push tedakshay/fedora:$VERSION
