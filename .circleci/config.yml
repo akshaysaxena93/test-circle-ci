@@ -22,7 +22,7 @@ jobs:
           name: build and push docker image
           command: |
             # docker login
-            docker login --username=tedakshay -p Akshhy@16Akshhy@16
+            docker login --username=tedakshay -p Dockerpassword
             docker build -t tedakshay/fedora:test-circle-new .
             VERSION=$(git tag | tail -1)
             echo $VERSION
