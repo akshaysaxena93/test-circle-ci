@@ -26,5 +26,5 @@ jobs:
             docker build -t tedakshay/fedora:test-circle-new .
             VERSION=$(git tag | tail -1)
             echo $VERSION
-            docker tag tedakshay/fedora:test-circle-new tedakshay/fedora:$VERSION
+            docker tag tedakshay/fedora:test-circle-new tedakshay/fedora:new
             docker push tedakshay/fedora:new
