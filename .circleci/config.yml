@@ -13,8 +13,8 @@ jobs:
           name:
           command: |
             # installing curl and jq
-            apt install jq
-            apt install curl          
+            apt install jq -y
+            apt install curl -y         
       - docker/install-docker
       - setup_remote_docker
       - run:
