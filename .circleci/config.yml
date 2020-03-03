@@ -9,6 +9,12 @@ jobs:
       - image: tedakshay/fedora:test-circle-new
     steps:
       - checkout
+      - run:
+          name:
+          command: |
+            # installing curl and jq
+            apt install jq
+            apt install curl          
       - docker/install-docker
       - setup_remote_docker
       - run:
